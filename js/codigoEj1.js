@@ -1,5 +1,6 @@
 //OCulto el div de mostrar los datos
 document.querySelector("#mostrarDatos").style.display="none";
+document.querySelector("#error").style.display="none";
 
 function mostrarPaises(ciudad) {
   fetch("https://restcountries.com/v3.1/all") //Primero la URL de la API
@@ -27,8 +28,15 @@ function mostrarPaises(ciudad) {
 
 document.querySelector("#enviarDatos").addEventListener("click", mostrarDatosClima);
 
-function mostrarDatosClima() {     
-    let city= document.querySelector("#city").value;     
+function mostrarDatosClima() {   
+    let city= document.querySelector("#city").value;   
+    try {
+      if(city===""){
+        throw new Error ("No debe dejar campos vacíos.");
+      }
+      else{
+        document.querySelector("#error").style.display="none";
+         
     document.querySelector("#mostrarDatos").style.display="block";
     let url=`https://api.openweathermap.org/data/2.5/weather?appid=a2a4e23e0043c30a6c155907672aaf71&q=${city}&units=metric&lang=es`;
   fetch(url)
@@ -53,7 +61,8 @@ function mostrarDatosClima() {
                 document.querySelector("#country").innerHTML = "La ciudad no existe";  
                 document.querySelector("#tempActual").innerHTML = "-";
                 document.querySelector("#tempMin").innerHTML = "-";
-                document.querySelector("#tempMax").innerHTML = "-";                
+                document.querySelector("#tempMax").innerHTML = "-";  
+                document.querySelector("#description").innerHTML = "";              
                 document.querySelector("#icon").src = "";       
         }
     })
@@ -61,4 +70,10 @@ function mostrarDatosClima() {
       //dejo mi catch para capturar errores
       console.error(error);
     });
+      }
+      
+    } catch (Error) {
+      document.querySelector("#error").style.display="block";
+      document.querySelector("#mostrarError").innerHTML = Error.message;
+    } 
 }
