@@ -30,15 +30,22 @@ document.querySelector("#enviarDatos").addEventListener("click", mostrarDatosCli
 
 function mostrarDatosClima() {   
     let city= document.querySelector("#city").value;   
+    let cantDays = Number(document.querySelector("#cantDays").value); 
     try {
-      if(city===""){
+      if(city==="" || cantDays===""){
         throw new Error ("No debe dejar campos vacíos.");
+      }
+      else if(isNaN(cantDays)){
+        throw new Error ("El campo de días debe ser numérico.");
+      }
+      else if(cantDays<=0 || cantDays>7 ){
+        throw new Error ("Cantidad de Días debe ser mayor que 0 y menor que 7.");
       }
       else{
         document.querySelector("#error").style.display="none";
          
     document.querySelector("#mostrarDatos").style.display="block";
-    let url=`https://api.openweathermap.org/data/2.5/weather?appid=a2a4e23e0043c30a6c155907672aaf71&q=${city}&units=metric&lang=es`;
+    let url=`https://api.openweathermap.org/data/2.5/forecast/daily?cnt=${cantDays}&appid=1573c2baa2cfe07cb8ee524834829651&units=metric&q=${city}&lang=es`;
   fetch(url)
     .then(function (response) {
       //llamo mi primer response de JSON como un return
@@ -47,23 +54,25 @@ function mostrarDatosClima() {
 
     .then(function (data)                             //capturo los datos con los que trabajare
     {
-      //console.log(data); //reviso que me devuelva los valores     
+      console.log(data); //reviso que me devuelva los valores     
       if(data.cod >=200 && data.cod <300) {
-        mostrarPaises(data.sys.country);
-        document.querySelector("#tempActual").innerHTML = data.main.temp;
-        document.querySelector("#tempMin").innerHTML = data.main.temp_min;
-        document.querySelector("#tempMax").innerHTML = data.main.temp_max;
-        document.querySelector("#description").innerHTML = data.weather[0].description;
-        let idIcon = data.weather[0].icon;
-        let srcIcon = `http://openweathermap.org/img/wn/${idIcon}@2x.png`;
-        document.querySelector("#icon").src = srcIcon;       
-        }else{            
-                document.querySelector("#country").innerHTML = "La ciudad no existe";  
-                document.querySelector("#tempActual").innerHTML = "-";
-                document.querySelector("#tempMin").innerHTML = "-";
-                document.querySelector("#tempMax").innerHTML = "-";  
-                document.querySelector("#description").innerHTML = "";              
-                document.querySelector("#icon").src = "";       
+        mostrarPaises(data.city.country);
+        document.querySelector("#mostrarDatos").innerHTML=`<p>País: <span id="country" class="fw-bold"></span></p>`;
+       data.list.forEach(function (element){        
+        document.querySelector("#mostrarDatos").innerHTML += `
+             <p>Temperatura Actual: <span class="fw-bold" id="tempActual">${element.temp.day}</span></p>
+             <p id="description" class="text-capitalize fw-bold">${element.weather[0].description}</p>
+             <p>Temperatura Mínima: <span class="fw-bold" id="tempMin">${element.temp.min}</span></p>
+                <p>Temperatura Temperatura Máxima: <span class="fw-bold" id="tempMax">${element.temp.max}</span></p>
+                <img src="http://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png" id="icon" class="img-fluid"></img>
+                <hr>`;
+
+        });
+    
+               
+        }else{     
+                document.querySelector("#mostrarDatos").innerHTML=`<p>País: <span id="country" class="fw-bold"></span></p>`;       
+                document.querySelector("#country").innerHTML = "La ciudad no existe";                    
         }
     })
     .catch(function (error) {
@@ -73,7 +82,7 @@ function mostrarDatosClima() {
       }
       
     } catch (Error) {
-      document.querySelector("#mostrarDatos").style.display="none";
+        document.querySelector("#mostrarDatos").style.display="none";
       document.querySelector("#error").style.display="block";
       document.querySelector("#mostrarError").innerHTML = Error.message;
     } 

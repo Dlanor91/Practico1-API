@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- JavaScript -->
+    <script src="js/codigoEj2.js" type="text/javascript" defer></script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -15,6 +17,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>Práctico 1 - Ejercicio 2</title>
 </head>
 
@@ -23,7 +27,7 @@
         <!-- Navegador -->
         <header class="row">
             <nav class="col-12 navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="Index.html">API</a>                              
+                <a class="navbar-brand" href="Index.html">API</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -37,30 +41,28 @@
                             <a class="nav-link" href="Ejercicio1.html">Ejercicio 1</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active fw-bold"  aria-current="page"  href="Ejercicio2.html">Ejercicio 2</a>
-                        </li>                        
+                            <a class="nav-link active fw-bold" aria-current="page" href="Ejercicio2.html">Ejercicio
+                                2</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Ejercicio3.html">Ejercicio 3</a>
-                        </li>                        
+                        </li>
                     </ul>
-                </div>           
-        </nav>
+                </div>
+            </nav>
         </header>
         <!-- Contenido -->
-<!-- Contenido -->
+        <!-- Contenido -->
         <section>
-            <h1>Pronóstico Diario</h1>
+            <h1>Pronóstico Semanal</h1>
             <label for="city">Ciudad</label><br>
-            <input type="text" id="city" name="city" placeholder="Ciudad"><br><br>           
-            <a class="btn btn-outline-secondary" id="enviarDatos" >Consultar <i class="fas fa-search"></i></a><br><br>
-            
-            <article id="mostrarDatos" >
-                <p>País: <span id="country" class="fw-bold"></span></p>
-                <p>Temperatura Actual: <span class="fw-bold" id="tempActual"></span></p>
-                <p id="description" class="text-capitalize fw-bold"></p>
-                <p>Temperatura Mínima: <span class="fw-bold" id="tempMin"></span></p>
-                <p>Temperatura Temperatura Máxima: <span class="fw-bold" id="tempMax"></span></p>    
-                  <img src="" id="icon" class="img-fluid">                
+            <input type="text" id="city" placeholder="Ciudad"><br>
+            <label for="cantDays">Cantidad de Días</label><br>
+            <input type="number" id="cantDays" placeholder="Cantidad de Días"><br><br>
+            <a class="btn btn-outline-secondary" id="enviarDatos">Consultar <i class="fas fa-search"></i></a><br><br>
+
+            <article id="mostrarDatos">           
+                
             </article>
             <article id="error">
                 <p id="mostrarError"></p>
@@ -68,8 +70,8 @@
         </section>
         <!-- Footer -->
         <footer class="row text-center bg-light">
-            <p class="my-2">Universidad ORT - Todos los derechos Reservados 2- Ronald Lima - <a href="mailto:rl8506@gmail.com"
-                    class="text-decoration-none">rl8506@gmail.com</a></p>
+            <p class="my-2">Universidad ORT - Todos los derechos Reservados 2- Ronald Lima - <a
+                    href="mailto:rl8506@gmail.com" class="text-decoration-none">rl8506@gmail.com</a></p>
         </footer>
     </main>
 </body>
