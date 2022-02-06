@@ -17,6 +17,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
+
+       <!-- Fontawesome --> 
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>Práctico 1 - Ejercicio 1</title>
 </head>
 
@@ -52,12 +55,17 @@
         <section>
             <h1>Pronóstico Diario</h1>
             <label for="city">Ciudad</label><br>
-            <input type="text" id="city" name="city" placeholder="Ciudad"><br>
-            <label for="country">País</label><br>
-            <select id="country"></select><br><br>
-            <input type="submit" value="Consultar" id="enviarDatos">
-
-            <article id="mostrarDatos"></article>
+            <input type="text" id="city" name="city" placeholder="Ciudad"><br><br>           
+            <a class="btn btn-outline-secondary" id="enviarDatos" >Consultar <i class="fas fa-search"></i></a><br><br>
+            
+            <article id="mostrarDatos" >
+                <p>País: <span id="country" class="Bold text"></span></p>
+                <p>Temperatura Actual: <span class="Bold text" id="tempActual"></span></p>
+                <p id="description" class="text-capitalize"></p>
+                <p>Temperatura Mínima: <span class="Bold text" id="tempMin"></span></p>
+                <p>Temperatura Temperatura Máxima: <span class="Bold text" id="tempMax"></span></p>    
+                  <img src="" id="icon">                
+            </article>
         </section>
         <!-- Footer -->
         <footer class="row text-center bg-light">
