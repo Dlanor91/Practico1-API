@@ -30,7 +30,9 @@ document.querySelector("#enviarDatos").addEventListener("click", mostrarDatosCli
 
 function mostrarDatosClima() {   
     let city= document.querySelector("#city").value;   
-    let cantDays = Number(document.querySelector("#cantDays").value); 
+    let cantDays = Number(document.querySelector("#cantDays").value);
+    document.querySelector("#city").value=""; 
+    document.querySelector("#cantDays").value="";
     try {
       if(city==="" || cantDays===""){
         throw new Error ("No debe dejar campos vacíos.");

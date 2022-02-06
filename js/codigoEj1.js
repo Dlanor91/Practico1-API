@@ -29,7 +29,8 @@ function mostrarPaises(ciudad) {
 document.querySelector("#enviarDatos").addEventListener("click", mostrarDatosClima);
 
 function mostrarDatosClima() {   
-    let city= document.querySelector("#city").value;   
+    let city= document.querySelector("#city").value; //Capturo el valor y luego limpio el campo
+    document.querySelector("#city").value="";
     try {
       if(city===""){
         throw new Error ("No debe dejar campos vacíos.");
