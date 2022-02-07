@@ -52,19 +52,19 @@
             </nav>
         </header>
         <!-- Contenido -->
-        <!-- Contenido -->
-        <section>
-            <h1>Pronóstico Semanal</h1>
-            <label for="city">Ciudad</label><br>
-            <input type="text" id="city" placeholder="Ciudad"><br>
-            <label for="cantDays">Cantidad de Días</label><br>
-            <input type="number" id="cantDays" placeholder="Cantidad de Días"><br><br>
-            <a class="btn btn-outline-secondary" id="enviarDatos">Consultar <i class="fas fa-search"></i></a><br><br>
-
-            <article id="mostrarDatos">           
-                
+        <section class="row">
+            <article class="col-12">
+                <h1>Pronóstico Semanal</h1>
+                <label for="city">Ciudad</label><br>
+                <input type="text" id="city" placeholder="Ciudad"><br>
+                <label for="cantDays">Cantidad de Días</label><br>
+                <input type="number" id="cantDays" placeholder="Cantidad de Días"><br><br>
+                <a class="btn btn-outline-secondary" id="enviarDatos">Consultar <i class="fas fa-search"></i></a><br><br>
             </article>
-            <article id="error">
+            <article id="mostrarDatos" class="col-12">
+
+            </article>
+            <article id="error" class="col-12">
                 <p id="mostrarError"></p>
             </article>
         </section>
