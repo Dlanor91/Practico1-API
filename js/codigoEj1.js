@@ -34,11 +34,8 @@ function mostrarDatosClima() {
     try {
       if(city===""){
         throw new Error ("No debe dejar campos vacíos.");
-      }
-      else{
-        document.querySelector("#error").style.display="none";
-         
-    document.querySelector("#mostrarDatos").style.display="block";
+      }  
+      
     let url=`https://api.openweathermap.org/data/2.5/weather?appid=a2a4e23e0043c30a6c155907672aaf71&q=${city}&units=metric&lang=es`;
   fetch(url)
     .then(function (response) {
@@ -51,6 +48,8 @@ function mostrarDatosClima() {
       //console.log(data); //reviso que me devuelva los valores     
       if(data.cod >=200 && data.cod <300) {
         mostrarPaises(data.sys.country);
+        document.querySelector("#error").style.display="none";
+        document.querySelector("#mostrarDatos").style.display="block";
         document.querySelector("#tempActual").innerHTML = data.main.temp;
         document.querySelector("#tempMin").innerHTML = data.main.temp_min;
         document.querySelector("#tempMax").innerHTML = data.main.temp_max;
@@ -58,11 +57,14 @@ function mostrarDatosClima() {
         let idIcon = data.weather[0].icon;
         let srcIcon = `http://openweathermap.org/img/wn/${idIcon}@2x.png`;
         document.querySelector("#icon").src = srcIcon;       
-        }else{            
-                document.querySelector("#country").innerHTML = "La ciudad no existe";  
-                document.querySelector("#tempActual").innerHTML = "-";
-                document.querySelector("#tempMin").innerHTML = "-";
-                document.querySelector("#tempMax").innerHTML = "-";  
+        }else{  
+          document.querySelector("#mostrarDatos").style.display="none";
+          document.querySelector("#error").style.display="block";
+          document.querySelector("#mostrarError").innerHTML =`La ciudad no existe.`;          
+                document.querySelector("#country").innerHTML = "";  
+                document.querySelector("#tempActual").innerHTML = "";
+                document.querySelector("#tempMin").innerHTML = "";
+                document.querySelector("#tempMax").innerHTML = "";  
                 document.querySelector("#description").innerHTML = "";              
                 document.querySelector("#icon").src = "";       
         }
@@ -71,7 +73,7 @@ function mostrarDatosClima() {
       //dejo mi catch para capturar errores
       console.error(error);
     });
-      }
+      
       
     } catch (Error) {
       document.querySelector("#mostrarDatos").style.display="none";

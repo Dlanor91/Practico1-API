@@ -37,15 +37,14 @@ function mostrarDatosClima() {
       if(city==="" || cantDays===""){
         throw new Error ("No debe dejar campos vacíos.");
       }
-      else if(isNaN(cantDays)){
+      if(isNaN(cantDays)){
         throw new Error ("El campo de días debe ser numérico.");
       }
-      else if(cantDays<=0 || cantDays>7 ){
+      if(cantDays<=0 || cantDays>7 ){
         throw new Error ("Cantidad de Días debe ser mayor que 0 y menor que 7.");
-      }
-      else{
-        document.querySelector("#error").style.display="none";
-         
+      }   
+    
+      document.querySelector("#error").style.display="none";         
     document.querySelector("#mostrarDatos").style.display="block";
     let url=`https://api.openweathermap.org/data/2.5/forecast/daily?cnt=${cantDays}&appid=1573c2baa2cfe07cb8ee524834829651&units=metric&q=${city}&lang=es`;
   fetch(url)
@@ -58,7 +57,7 @@ function mostrarDatosClima() {
     {
       console.log(data); //reviso que me devuelva los valores     
       if(data.cod >=200 && data.cod <300) {
-        mostrarPaises(data.city.country);
+        mostrarPaises(data.city.country);        
         document.querySelector("#mostrarDatos").innerHTML=`<p>País: <span id="country" class="fw-bold"></span></p>`;
        data.list.forEach(function (element){        
         document.querySelector("#mostrarDatos").innerHTML += `
@@ -69,11 +68,9 @@ function mostrarDatosClima() {
                 <img src="http://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png" id="icon" class="img-fluid"></img>
                 <hr>`;
 
-        });
-    
-               
+        });               
         }else{     
-                document.querySelector("#mostrarDatos").innerHTML=`<p>País: <span id="country" class="fw-bold"></span></p>`;       
+                document.querySelector("#mostrarDatos").innerHTML=`<p>Error: <span id="country" class="fw-bold"></span></p>`;       
                 document.querySelector("#country").innerHTML = "La ciudad no existe";                    
         }
     })
@@ -81,8 +78,7 @@ function mostrarDatosClima() {
       //dejo mi catch para capturar errores
       console.error(error);
     });
-      }
-      
+            
     } catch (Error) {
         document.querySelector("#mostrarDatos").style.display="none";
       document.querySelector("#error").style.display="block";
