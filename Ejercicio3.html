@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,22 +10,23 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-   <!-- CSS -->
-   <link rel="stylesheet" href="css/estilos.css" type="text/css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/estilos.css" type="text/css">
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
-     <!-- Fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">     
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>Práctico 1 - Ejercicio 3</title>
 </head>
+
 <body>
     <main class="container-fluid">
         <!-- Navegador -->
         <header class="row">
-            <nav class="col navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="Index.html">API</a>                              
+            <nav class="col navbar navbar-expand-md navbar-light bg-light">
+                <a class="navbar-brand" href="Index.html">API</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -39,28 +41,36 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Ejercicio2.html">Ejercicio 2</a>
-                        </li>                        
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link active fw-bold"  aria-current="page" href="Ejercicio3.html">Ejercicio 3</a>
-                        </li>                        
+                            <a class="nav-link active fw-bold" aria-current="page" href="Ejercicio3.html">Ejercicio
+                                3</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Ejercicio4.html">Ejercicio 4</a>
+                        </li>
                     </ul>
-                </div>           
-        </nav>
+                </div>
+            </nav>
         </header>
         <!-- Contenido -->
         <section class="row">
             <article class="col-12">
                 <h1>Cotización de monedas</h1>
-            Cotiza de <select id="monedaBase"></select> a <select id="monedaDestino"></select><br><br>
-            <a class="btn btn-outline-secondary" id="convertirMonedas">Consultar <i class="fas fa-exchange-alt"></i></a><br><br>
-            <P id="mostrar" class="fw-bold"></P>
-            </article>            
+                <label for="monedaBase">Cotiza de: </label>                
+                <select id="monedaBase"></select><br><br>
+                <label for="monedaDestino">A: </label>                
+                <select id="monedaDestino"></select><br><br>
+                <a class="btn btn-outline-secondary" id="convertirMonedas">Consultar <i class="fas fa-exchange-alt"></i></a><br><br>
+                <P id="mostrar" class="fw-bold"></P>
+            </article>
         </section>
-         <!-- Footer -->
-         <footer class="row text-center bg-light">
-            <p class="my-2">Universidad ORT - Todos los derechos Reservados - Ronald Lima - <a href="mailto:rl8506@gmail.com"
-                    class="text-decoration-none">rl8506@gmail.com</a></p>
+        <!-- Footer -->
+        <footer class="row text-center bg-light">
+            <p class="my-2">Universidad ORT - Todos los derechos Reservados - Ronald Lima - <a
+                    href="mailto:rl8506@gmail.com" class="text-decoration-none">rl8506@gmail.com</a></p>
         </footer>
-    </main>    
+    </main>
 </body>
+
 </html>
