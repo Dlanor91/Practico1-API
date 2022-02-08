@@ -29,10 +29,10 @@ function mostrarPaises(ciudad) {
 document.querySelector("#enviarDatos").addEventListener("click", mostrarDatosClima);
 
 function mostrarDatosClima() {   
-    let city= document.querySelector("#city").value; //Capturo el valor y luego limpio el campo
+    let city= document.querySelector("#city").value.trim(); //Capturo el valor y luego limpio el campo
     document.querySelector("#city").value="";
     try {
-      if(city===""){
+      if(city.trim()===""){
         throw new Error ("No debe dejar campos vacíos.");
       }  
       
@@ -55,7 +55,7 @@ function mostrarDatosClima() {
         document.querySelector("#tempMax").innerHTML = data.main.temp_max;
         document.querySelector("#description").innerHTML = data.weather[0].description;
         let idIcon = data.weather[0].icon;
-        let srcIcon = `http://openweathermap.org/img/wn/${idIcon}@2x.png`;
+        let srcIcon = `http://openweathermap.org/img/w/${idIcon}.png`;
         document.querySelector("#icon").src = srcIcon;       
         }else{  
           document.querySelector("#mostrarDatos").style.display="none";

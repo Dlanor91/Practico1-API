@@ -29,12 +29,12 @@ function mostrarPaises(ciudad) {
 document.querySelector("#enviarDatos").addEventListener("click", mostrarDatosClima);
 
 function mostrarDatosClima() {   
-    let city= document.querySelector("#city").value;   
+    let city= document.querySelector("#city").value.trim();   
     let cantDays = Number(document.querySelector("#cantDays").value);
     document.querySelector("#city").value=""; 
     document.querySelector("#cantDays").value="";
     try {
-      if(city==="" || cantDays===""){
+      if(city.trim()==="" || cantDays===""){
         throw new Error ("No debe dejar campos vacíos.");
       }
       if(isNaN(cantDays)){
@@ -65,7 +65,7 @@ function mostrarDatosClima() {
              <p id="description" class="text-capitalize fw-bold">${element.weather[0].description}</p>
              <p>Temperatura Mínima: <span class="fw-bold" id="tempMin">${element.temp.min}</span></p>
                 <p>Temperatura Temperatura Máxima: <span class="fw-bold" id="tempMax">${element.temp.max}</span></p>
-                <img src="http://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png" id="icon" class="img-fluid"></img>
+                <img src="http://openweathermap.org/img/w/${element.weather[0].icon}.png" id="icon" class="img-fluid"></img>
                 <hr>`;
 
         });               
